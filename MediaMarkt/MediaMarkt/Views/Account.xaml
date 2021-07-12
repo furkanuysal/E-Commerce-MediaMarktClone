@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MediaMarkt.ViewModels"
+             x:Class="MediaMarkt.Views.Account">
+    <ContentPage.BindingContext>
+        <vm:AccountViewModel/>
+    </ContentPage.BindingContext>
+    <Shell.TitleView>
+        <StackLayout>
+            <Image Source="mediamarktlogo.png" WidthRequest="200" HorizontalOptions="Center"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <ScrollView HeightRequest="6000">
+        <StackLayout>
+        <Label Text="Müşteri Bilgileri" FontSize="22" TextColor="Black" FontAttributes="Bold" Margin="10,5,0,0"/>
+        <Label Text="Fatura Adresi" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,5,0,0"/>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding Name}" FontSize="12" TextColor="Black" Margin="10,0,0,0"/>
+            <Label Text="{Binding Surname}" FontSize="12" TextColor="Black" Margin="10,0,0,0"/>
+        </StackLayout>
+        <Label Text="{Binding PhoneNumber}" FontSize="12" TextColor="Black" Margin="10,0,0,0"/>
+        <Label Text="{Binding Username}" FontSize="12" TextColor="Black" Margin="10,0,0,0"/>
+        <StackLayout Orientation="Horizontal">
+            <CheckBox Color="LightGreen" Margin="10,0,0,0"/>
+            <Label Text="Teslimat Adresi" FontSize="14" TextColor="LightGreen" FontAttributes="Bold" Margin="10,5,0,0"/>
+        </StackLayout>
+            <Button x:Name="changeButton" Text="Değiştir" BackgroundColor="LightGray" TextColor="Black" HeightRequest="45" CornerRadius="10" Margin="0,5,0,0"/>
+        <Label Text="Teslimat Adresi" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,20,0,0"/>
+        <Label Text="Lütfen teslimat adresi girin." FontSize="12" TextColor="Black" Margin="10,5,0,0"/>
+        <Button x:Name="addAdressButton" Text="Yeni Teslimat Adresi" BackgroundColor="LightGray" TextColor="Black" HeightRequest="45" CornerRadius="10" Margin="0,5,0,0"/>
+        <Label Text="Hesabımı Sil" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,20,0,0"/>
+        <Label Text="Hesabınızı tamamen silmek isterseniz 'Hesabımı Sil' butonunu kullanabilirsiniz." FontSize="13" TextColor="Black" Margin="10,5,0,0"/>
+            <Button x:Name="deleteAccountButton" Text="Hesabımı Sil" BackgroundColor="LightGray" TextColor="Black" HeightRequest="45" CornerRadius="10" Margin="0,5,0,0"/>
+        <Label Text="Şifre" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,20,0,0"/>
+        <Label Text="Şifremi değiştir" FontSize="13" TextColor="Black" Margin="10,5,0,0"/>
+            <Button x:Name="changepwordButton" Text="Düzenle" BackgroundColor="LightGray" TextColor="Black" HeightRequest="45" CornerRadius="10" Margin="0,5,0,0"/>
+            <Label Text="Çıkış" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,20,0,0"/>
+            <Label Text="Çıkış yapmak için 'Çıkış Yap' butonunu kullanabilirsiniz." FontSize="13" TextColor="Black" Margin="10,5,0,0"/>
+            <Button Command="{Binding LogoutCommand}" Text="Çıkış Yap" BackgroundColor="LightGray" TextColor="Black" HeightRequest="45" CornerRadius="10" Margin="0,5,0,0"/>
+        </StackLayout>
+     </ScrollView>
+</ContentPage>

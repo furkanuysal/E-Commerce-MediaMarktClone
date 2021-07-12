@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" 
+             xmlns:mediamarkt="clr-namespace:MediaMarkt.Models" 
+             xmlns:vm="clr-namespace:MediaMarkt.ViewModels"
+             x:Class="MediaMarkt.Views.HomePage">
+    <Shell.TitleView>
+        <StackLayout>
+            <Image Source="mediamarktlogo.png" WidthRequest="200" HorizontalOptions="Center"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.BindingContext>
+        <vm:HomePageViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="LightGray" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView HeightRequest="3000">
+            <StackLayout>
+
+                <CarouselView IndicatorView="{x:Reference campaignIndicator}"
+                      VerticalOptions="Start"
+                          HeightRequest="400">
+                    <CarouselView.ItemsLayout>
+                        <LinearItemsLayout
+                        Orientation="Horizontal"
+                        ItemSpacing="10"
+                        SnapPointsAlignment="Start"
+                        SnapPointsType="MandatorySingle"/>
+                    </CarouselView.ItemsLayout>
+                    <d:CarouselView.ItemsSource>
+                        <x:Array Type="{x:Type mediamarkt:Campaign}">
+                            <mediamarkt:Campaign ImageSource="campaign1.png"/>
+                            <mediamarkt:Campaign ImageSource="campaign2.png"/>
+                            <mediamarkt:Campaign ImageSource="campaign3.png"/>
+                            <mediamarkt:Campaign ImageSource="campaign4.png"/>
+                            <mediamarkt:Campaign ImageSource="campaign5.png"/>
+                            <mediamarkt:Campaign ImageSource="campaign6.png"/>
+                            <mediamarkt:Campaign ImageSource="campaign7.png"/>
+                            <mediamarkt:Campaign ImageSource="campaign8.png"/>
+                        </x:Array>
+                    </d:CarouselView.ItemsSource>
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding ImageSource}"
+                               VerticalOptions="Start">
+                            </Image>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <IndicatorView x:Name="campaignIndicator" IndicatorColor="Gray" SelectedIndicatorColor="Red" IndicatorsShape="Circle" Margin="0,0,0,30"/>
+                <Label Text="Sizin için Seçtiklerimiz" TextColor="Black" FontSize="Large" Margin="10,0,0,10" />
+                <CollectionView ItemsSource="{Binding LatestProducts}"
+                            Margin="0,20"
+                            HeightRequest="125" VerticalOptions="FillAndExpand"
+                            HorizontalScrollBarVisibility="Never"
+                            ItemsLayout="HorizontalList"
+                            SelectionMode="Single"
+                            Grid.Row="2"
+                                SelectionChanged="CollectionView_SelectionChanged"
+                            >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="0,0,15,0">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="0" 
+                               Source="{Binding ImageUrl}" 
+                               Aspect="AspectFit"
+                               HeightRequest="90" 
+                               WidthRequest="90" />
+                                <Label Text="{Binding Name}"
+                                   HorizontalTextAlignment="Center" Grid.Row="1"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:MediaMarkt.Helpers"
+             x:Class="MediaMarkt.Views.ProductDetailsPage">
+    <Shell.TitleView>
+        <StackLayout>
+            <Image Source="mediamarktlogo.png" WidthRequest="200" HorizontalOptions="Center"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+            <ScrollView HeightRequest="8000">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Image Grid.Row="0" Source="{Binding SelectedProductItem.ImageUrl}"
+                   Aspect="AspectFit" VerticalOptions="Start" 
+                       HeightRequest="200" 
+                       WidthRequest="200"/>
+                <ImageButton 
+                Grid.Row="0" HorizontalOptions="Start" Aspect="AspectFit"
+                VerticalOptions="Start" Margin="10,30"
+                Clicked="ImageButton_Clicked" />
+
+                <StackLayout Grid.Row="2" Spacing="10" Padding="10"
+                         VerticalOptions="Start">
+
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Label Text="Ürün Adı: " FontSize="Subtitle"
+                           TextColor="Black"/>
+                        <Label Text="{Binding SelectedProductItem.Name}"
+                           FontSize="Subtitle"
+                           TextColor="Black"/>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Label Text="Açıklama: " FontSize="Subtitle"
+                           TextColor="Black"/>
+                        <Label Text="{Binding SelectedProductItem.Description}"
+                           FontSize="Subtitle"
+                           TextColor="Black" />
+                    </StackLayout>
+
+                </StackLayout>
+
+                <Grid Grid.Row="3" HorizontalOptions="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Text="-" FontSize="30" TextColor="Black"
+                        BackgroundColor="LightBlue"
+                        Grid.Column="0"
+                        HorizontalOptions="End"
+                        Command="{Binding DecrementOrderCommand}" />
+
+                    <Entry Text="{Binding TotalQuantity}" Grid.Column="1"
+                       BackgroundColor="LightGreen"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center" FontSize="30"
+                       TextColor="Black"/>
+
+                    <Entry Text="{Binding TotalQuantity}" Grid.Column="1"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="Center" FontSize="30"
+                       WidthRequest="40"
+                       BackgroundColor="Transparent"
+                       />
+
+                    <Button Text="+" FontSize="30" TextColor="Black"
+                        BackgroundColor="LightBlue"
+                        Grid.Column="2"
+                        HorizontalOptions="Start"
+                        Command="{Binding IncrementOrderCommand}" />
+                </Grid>
+
+                <StackLayout Grid.Row="4">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                        <Button Text="Sepete Ekle"
+                            BackgroundColor="LightGreen"    
+                            WidthRequest="200" HorizontalOptions="Center"
+                            Command="{Binding AddToCartCommand}"
+                            HeightRequest="50"
+                            TextColor="Black"/>
+                    </StackLayout>
+                </StackLayout>
+
+            </Grid>
+        </ScrollView>
+        </ContentPage.Content>
+    
+</ContentPage>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MediaMarkt.Views.OrdersView">
+    <Shell.TitleView>
+        <StackLayout>
+            <Image Source="mediamarktlogo.png" WidthRequest="200" HorizontalOptions="Center"/>
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Siparişiniz alınmıştır." />
+                <Label Text="Lütfen sipariş numaranızı bir yere not ediniz." />
+                <Label x:Name="LabelOrderID" TextColor="Red"
+                           FontSize="Subtitle" />
+
+                <Button Text="Ana Menüye Dön"
+                            WidthRequest="200"
+                            BackgroundColor="LightGreen"
+                            HorizontalOptions="Center"
+                            TextColor="Black"
+                            CornerRadius="20" Clicked="Button_Clicked" />
+            </StackLayout>
+      </ContentPage.Content>
+</ContentPage>

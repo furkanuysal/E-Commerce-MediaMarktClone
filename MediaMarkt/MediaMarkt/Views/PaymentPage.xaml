@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:MediaMarkt.ViewModels"
+             x:Class="MediaMarkt.Views.PaymentPage">
+    <Shell.TitleView>
+        <StackLayout>
+            <Image Source="mediamarktlogo.png" WidthRequest="200" HorizontalOptions="Center"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.BindingContext>
+        <vm:PaymentViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <Label Text="Ödeme Yöntemi" Margin="10,10,0,0"
+                     HorizontalTextAlignment="Start" FontSize="Large" TextColor="Black" FontAttributes="Italic,Bold"/>
+            <Label Text="Kart Üzerindeki İsim*" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+            <Entry x:Name="name_entry" BackgroundColor="#E5E5E5" HorizontalOptions="Center" WidthRequest="400"/>
+            <Label Text="Kart Numarası*" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+        <Entry x:Name="cardnumber_entry" BackgroundColor="#E5E5E5" HorizontalOptions="Center" WidthRequest="400"/>
+        <Label Text="CVV*" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+        <Entry x:Name="cvv_entry" BackgroundColor="#E5E5E5" HorizontalOptions="Start" WidthRequest="100" Margin="7,0,0,0"/>
+        <Label Text="Son Kullanım Tarihi*" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+        <Entry x:Name="skt_entry" BackgroundColor="#E5E5E5" HorizontalOptions="Start" WidthRequest="100" Margin="7,0,0,0"/>
+        <Button Text="Ödemeyi Tamamla" BackgroundColor="White" TextColor="Black" BorderColor="Black" 
+         BorderWidth="1" HorizontalOptions="Center" CornerRadius="20" Command="{Binding PlaceOrdersCommand}"/>
+    </StackLayout>
+</ContentPage>

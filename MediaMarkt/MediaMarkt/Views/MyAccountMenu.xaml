@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MediaMarkt.Views.MyAccountMenu"
+             xmlns:vm="clr-namespace:MediaMarkt.ViewModels">
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
+    <Shell.TitleView>
+        <StackLayout>
+            <Image Source="mediamarktlogo.png" WidthRequest="200" HorizontalOptions="Center"/>
+        </StackLayout>
+    </Shell.TitleView>
+
+    <StackLayout>
+        <Label Text="Giriş Yapın" FontSize="22" TextColor="Black" FontAttributes="Bold" Margin="10,5,0,0"/>
+        <Label Text="E-posta" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+        <Entry Placeholder="E-posta" x:Name="email_entry" Text="{Binding Username}" BackgroundColor="#E5E5E5"/>
+        <Label Text="Şifre" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+        <Entry Placeholder="Şifre" x:Name="password_entry" Text="{Binding Password}" IsPassword="True" BackgroundColor="#E5E5E5"/>
+        <Label Text="Şifremi Unuttum" FontAttributes="Bold" Margin="270,0,0,0"/>
+        <Button Text="Giriş" BackgroundColor="Black" TextColor="White" Command="{Binding LoginCommand}" />
+        <Label Text="Hemen Üye Ol" FontSize="22" TextColor="Black" FontAttributes="Bold" Margin="10,15,0,0"/>
+        <Label Text="Mediamarkt.com.tr üyesi olarak tüm kampanyalarımızdan haberdar olur, üyelere özel indirim fırsatlarımızdan faydalanabilirsin" 
+             FontSize="15" TextColor="Black" Margin="10,0,0,0" />
+        <Button x:Name="registerButton" Text="Hemen Üye Ol" TextColor="Black" BackgroundColor="LightGray" Clicked="registerButton_Clicked"/>
+    </StackLayout>
+</ContentPage>

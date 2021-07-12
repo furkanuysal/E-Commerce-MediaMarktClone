@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MediaMarkt.Views.RegisterPage"
+             xmlns:vm="clr-namespace:MediaMarkt.ViewModels">
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel/>
+    </ContentPage.BindingContext>
+    <Shell.TitleView>
+        <StackLayout>
+            <Image Source="mediamarktlogo.png" WidthRequest="200" HorizontalOptions="Center"/>
+        </StackLayout>
+        </Shell.TitleView>
+    <ScrollView HeightRequest="6000">
+        <StackLayout>
+        <Label Text="Kayıt Ol" FontSize="22" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+        <Label Text="Ünvan*" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+        <StackLayout Orientation="Horizontal">
+                <RadioButton Content="Kadın" FontSize="15" TextColor="Black" FontAttributes="Bold"/>
+                <RadioButton Content="Erkek" FontSize="15" TextColor="Black" FontAttributes="Bold"/>
+        </StackLayout>
+        <Label Text="İsim*" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+            <Entry x:Name="name_entry" BackgroundColor="#E5E5E5" Text="{Binding Name}"/>
+        <Label Text="Soyisim*" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+            <Entry x:Name="surname_entry" BackgroundColor="#E5E5E5" Text="{Binding Surname}"/>
+        <Label Text="Cep Telefonu" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+            <Entry x:Name="mobilephone_entry" BackgroundColor="#E5E5E5" Text="{Binding PhoneNumber}"/>
+        <Label Text="E-Posta*" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+            <Entry x:Name="email_entry" BackgroundColor="#E5E5E5" Text="{Binding Username}"/>
+        <Label Text="Şifre*" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+            <Entry x:Name="passwordReg_entry" BackgroundColor="#E5E5E5" Text="{Binding Password}" IsPassword="True"/>
+        <Label Text="Şifre Tekrar*" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+            <Entry x:Name="passwordAgain_entry" BackgroundColor="#E5E5E5" IsPassword="True"/>
+            <Label Text="*Şifreniz 8-15 karakter arasında olmalıdır. En fazla 3 ardışık karakter ya da sayı içerebilir. En az bir harf ve en fazla 4 benzer karakter içerebilir. Şifre tekrarı yeni şifreyle uyuşmalı ve şifren kullanıcı adından farklı olmalıdır." 
+             FontSize="13" TextColor="Black" Margin="10,0,3,0" />
+            <StackLayout Orientation="Horizontal">
+                <CheckBox Color="LightGreen" Margin="10,0,0,0"/>
+                <Label Text="Kurumsal Müşteri" FontSize="14" TextColor="Black" FontAttributes="Bold" Margin="10,5,0,0"/>
+            </StackLayout>
+            <Label Text="Lütfen vergi bilgilerinizi doğru girdiğinizden emin olunuz bu bilgiler daha sonra değiştirilemez."  FontSize="13" TextColor="Black" Margin="10,0,0,0"/>
+            <StackLayout Orientation="Horizontal">
+                <CheckBox Color="LightGreen" Margin="10,0,0,0"/>
+                <Label Text="Fırsatlardan Haberdar Olun" FontSize="14" TextColor="Black" FontAttributes="Bold" Margin="10,5,0,0"/>
+            </StackLayout>
+            <Label Text="MediaMarkt CLUB'a üye ol" FontSize="14" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+            <StackLayout Orientation="Horizontal">
+                <RadioButton Content="Evet" FontSize="15" TextColor="Black" FontAttributes="Bold" Margin="10,0,0,0"/>
+                <RadioButton Content="Hayır" FontSize="15" TextColor="Black" FontAttributes="Bold" IsChecked="True"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <CheckBox Color="LightGreen" Margin="10,0,0,0"/>
+                <Label Text="Gizlilik Politikasını" TextColor="Red" FontSize="14" FontAttributes="Bold" Margin="10,5,0,0"/>
+                <Label Text="okudum ve kabul ediyorum.*" TextColor="Black" FontSize="14" FontAttributes="Bold" Margin="0,5,0,0"/>
+            </StackLayout>
+            <Label Text="* İşaretli alanların girilmesi zorunludur." TextColor="Black" FontSize="14" FontAttributes="Bold" Margin="10,0,0,0"/>
+            <Button Text="Hemen Üye Ol" BackgroundColor="Black" TextColor="White" Command="{Binding RegisterCommand}"/>
+
+        </StackLayout>
+    </ScrollView>
+        
+</ContentPage>

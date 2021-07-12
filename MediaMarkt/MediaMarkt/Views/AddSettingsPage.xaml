@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MediaMarkt.Views.AddSettingsPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Manage Categories" x:Name="CategoriesButton" Clicked="CategoriesButton_Clicked" TextColor="Black"/>
+            <Button Text="Manage Sub Categories" x:Name="SubCategoriesButton" Clicked="SubCategoriesButton_Clicked" TextColor="Black"/>
+            <Button Text="Manage Products" x:Name="ProductsButton" Clicked="ProductsButton_Clicked" TextColor="Black"/>
+            <Button Text="Manage Cart" x:Name="CartButton" Clicked="CartButton_Clicked" TextColor="Black"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

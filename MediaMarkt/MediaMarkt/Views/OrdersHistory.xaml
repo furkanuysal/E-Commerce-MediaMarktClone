@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:MediaMarkt.ViewModels"
+             x:Class="MediaMarkt.Views.OrdersHistory">
+    <ContentPage.BindingContext>
+        <vm:UserOrdersHistoryViewModel />
+    </ContentPage.BindingContext>
+    <Shell.TitleView>
+        <StackLayout>
+            <Image Source="mediamarktlogo.png" WidthRequest="200" HorizontalOptions="Center"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid>
+            <CollectionView ItemsSource="{Binding OrderDetails}"
+                            IsGrouped="True" Margin="25,10,25,0"
+                            VerticalScrollBarVisibility="Never">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.EmptyViewTemplate>
+                    <DataTemplate>
+                        <Label Text="Henüz sipariş verilmedi." />
+                    </DataTemplate>
+                </CollectionView.EmptyViewTemplate>
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Grid BackgroundColor="LightSlateGray" Padding="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label Text="Sipariş Numarası" HorizontalOptions="Center"
+                                   FontSize="Subtitle" TextColor="White" Grid.Row="0" />
+                            <Label Text="{Binding OrderId}" TextColor="White"
+                                   Grid.Row="1" HorizontalOptions="Center"
+                                   FontSize="Body"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
+                <CollectionView.GroupFooterTemplate>
+                    <DataTemplate>
+                        <StackLayout BackgroundColor="#eeeeee">
+                            <Label Text="{Binding TotalCost,StringFormat='Toplam Tutar: ₺{0}'}"
+                                   TextColor="Black"
+                                   FontAttributes="Bold" />
+                            <BoxView BackgroundColor="LightGreen"
+                                      HeightRequest="3" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.GroupFooterTemplate>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" HasShadow="False" Margin="10"
+                               BorderColor="LightSlateGray"
+                               BackgroundColor="LightGreen">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="0">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Sipariş Detay Numarası : " />
+                                            <Span Text="{Binding OrderDetailId}" TextColor="Black"
+                                                   FontAttributes="Bold"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label Grid.Row="1">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Ürün Adı : " />
+                                            <Span Text="{Binding ProductName}" TextColor="Black"
+                                                   FontAttributes="Bold"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label Grid.Row="2">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Adet : " />
+                                            <Span Text="{Binding Quantity}" TextColor="Black"
+                                                   FontAttributes="Bold" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label Grid.Row="3">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Ücret : " />
+                                            <Span Text="{Binding Price, StringFormat='₺{0}'}" TextColor="Black"
+                                                   FontAttributes="Bold"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
